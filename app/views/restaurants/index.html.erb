@@ -1,0 +1,43 @@
+<%= link_to new_restaurant_path, {class: ""} do %>
+  <%= "create new restaurant" %>
+<% end %>
+
+
+<% @restaurants.each_with_index do |restaurant, index| %>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-10">
+        <div class="wrapper">
+          <div class="card-image">
+            <%= image_tag "http://lorempixel.com/150/80/food/#{index+1}", {class: "", id: "logo"}%>
+          </div>
+          <div class="card-info">
+            <div class="card-name">
+              <%= restaurant.name %>
+            </div>
+            <div class="card-add">
+              <%= restaurant.address %>,
+              avg rating: <%= average_rating(restaurant.reviews) %>
+            </div>
+
+          </div>
+          <div class="card-control">
+            <%= link_to restaurant_path(restaurant), {class: ""} do %>
+              <i class="fa fa-info"></i> view
+            <% end %>
+            <%= link_to new_restaurant_review_path(restaurant), {class: ""} do %>
+              <i class="fa fa-plus-circle"></i> review
+            <% end %>
+            <%= link_to new_restaurant_review_path(restaurant), {class: ""} do %>
+              <i class="fa fa-pencil-square-o"></i> edit
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+
+
